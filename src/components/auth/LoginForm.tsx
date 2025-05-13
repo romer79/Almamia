@@ -1,9 +1,9 @@
 // src/components/auth/LoginForm.tsx
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useActionState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -26,7 +26,7 @@ function SubmitButton() {
 export function LoginForm() {
   const { login } = useAuth();
   const { toast } = useToast();
-  const [state, formAction] = useFormState(loginUserAction, null);
+  const [state, formAction] = useActionState(loginUserAction, null);
 
   useEffect(() => {
     if (state?.success && state.user) {
