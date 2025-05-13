@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Briefcase, LogOut, UserCircle, Menu, Settings } from 'lucide-react';
+import { Home, Briefcase, LogOut, UserCircle, Menu } from 'lucide-react'; // Removed Settings as it's not used
 import { Logo } from '@/components/Logo';
 import { Button } from '@/components/ui/button';
 import {
@@ -15,6 +15,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Separator } from "@/components/ui/separator"; // Added import for Separator
 import { useAuth } from '@/hooks/useAuth';
 import { cn } from '@/lib/utils';
 import React from 'react';
@@ -77,6 +78,12 @@ export function Navbar() {
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
+                {/* 
+                  The destructive styles are applied directly here because DropdownMenuItem does not
+                  natively support a "destructive" variant. ShadCN's Button component does have it,
+                  but for DropdownMenuItem, direct Tailwind classes are used for such styling needs
+                  when a variant isn't available.
+                */}
                 <DropdownMenuItem onClick={logout} className="cursor-pointer text-red-500 hover:!text-red-500 focus:!text-red-500 focus:!bg-red-500/10">
                   <LogOut className="mr-2 h-4 w-4" />
                   Cerrar Sesión
@@ -104,6 +111,11 @@ export function Navbar() {
                 {user && (
                   <>
                     <Separator className="my-6" />
+                     {/* 
+                        Similar to DropdownMenuItem, Button has variants, but specific color overrides
+                        are sometimes needed for very specific destructive actions like this logout
+                        in a mobile menu.
+                      */}
                      <Button onClick={() => {logout(); setMobileMenuOpen(false);}} variant="outline" className="w-full text-red-500 border-red-500 hover:bg-red-500/10 hover:text-red-500">
                       <LogOut className="mr-2 h-4 w-4" />
                       Cerrar Sesión
