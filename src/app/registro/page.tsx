@@ -1,14 +1,14 @@
-// src/app/page.tsx
+// src/app/registro/page.tsx
 "use client";
 
-import { LoginForm } from '@/components/auth/LoginForm';
+import { RegistrationForm } from '@/components/auth/RegistrationForm';
 import { Logo } from '@/components/Logo';
 import { useAuth } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { Loader2 } from 'lucide-react';
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const { user, loading } = useAuth();
   const router = useRouter();
 
@@ -19,20 +19,20 @@ export default function LoginPage() {
   }, [user, loading, router]);
 
   if (loading || (!loading && user)) {
-    return (
+     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-background to-secondary p-4">
         <Loader2 className="h-12 w-12 animate-spin text-primary" />
         <p className="mt-4 text-lg text-foreground">Cargando...</p>
       </div>
     );
   }
-
+  
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-background to-secondary p-4">
       <div className="mb-8">
         <Logo size="text-4xl" iconSize="h-12 w-12" />
       </div>
-      <LoginForm />
+      <RegistrationForm />
     </div>
   );
 }
