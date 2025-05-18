@@ -12,12 +12,12 @@ export default function InicioPage() {
   ];
 
   const courseModules = [
-    { title: "La Enfermedad como Solución: Una Nueva Mirada para Entender tu Cuerpo", description: "" },
-    { title: "Autobiodecodificación: Descubre la Raíz Psicológica de tus Enfermedades, Traumas y Conflictos Vinculares", description: "" },
-    { title: "Del Estrés al Síntoma: La Conexión Científica entre Tu Mente y Tu Salud Revelada", description: "" },
-    { title: "Biodecodifica tu Propia Historia: Encuentra el Conflicto que Desencadenó Tu Realidad Actual", description: "" },
-    { title: "Agradece a Tu Cuerpo: Cómo la Biodecodificación Te Muestra la Solución para Tu Supervivencia", description: "" },
-    { title: "Sanación Profunda: Aprende a Trabajar la Raíz Psicológica para Evitar Recaídas", description: "" },
+    { title: "La Enfermedad como Solución", description: "Una Nueva Mirada para Entender tu Cuerpo" },
+    { title: "Autobiodecodificación", description: "Descubre la Raíz Psicológica de tus Enfermedades, Traumas y Conflictos Vinculares" },
+    { title: "Del Estrés al Síntoma", description: "La Conexión Científica entre Tu Mente y Tu Salud Revelada" },
+    { title: "Biodecodifica tu Propia Historia", description: "Encuentra el Conflicto que Desencadenó Tu Realidad Actual" },
+    { title: "Agradece a Tu Cuerpo", description: "Cómo la Biodecodificación Te Muestra la Solución para Tu Supervivencia" },
+    { title: "Sanación Profunda", description: "Aprende a Trabajar la Raíz Psicológica para Evitar Recaídas" },
   ];
 
   const testimonials = [
