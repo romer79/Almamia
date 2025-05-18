@@ -1,6 +1,5 @@
 // src/app/(main)/inicio/page.tsx
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CheckCircle, Zap, Heart, Brain, BookOpen, Users, Quote } from "lucide-react";
 import Image from "next/image";
 
@@ -23,21 +22,12 @@ export default function InicioPage() {
 
   const testimonials = [
     {
-      name: "Participante Anónimo",
-      avatarUrl: "https://placehold.co/100x100.png",
-      aiHint: "person happy",
       testimonial: "Mi experiencia con la biodecodificación cambió mi vida por completo. Aprendí a vivir sin dolor, a transformar mis pensamientos, y a sanar desde el alma y el corazón. La bio vino a salvar vidas. Hoy sé que estamos a tiempo de ser felices y vivir como lo merecemos.",
     },
     {
-      name: "Estudiante Agradecida",
-      avatarUrl: "https://placehold.co/100x100.png",
-      aiHint: "woman thankful",
       testimonial: "Quiero agradecerte por esta invitación y por compartir ese don tan hermoso que Dios te dio. Enseñás con tanto amor que solo puedo felicitarte de corazón. Que San Gabriel te guíe siempre. ¡Te quiero mucho Kari, genia total!",
     },
     {
-      name: "Viajero Interior",
-      avatarUrl: "https://placehold.co/100x100.png",
-      aiHint: "person content",
       testimonial: "Siento que este proceso me ayudó a encontrarme, a ser más consciente, a frenar antes de explotar. Ya casi ni me molesta no salir de vacaciones, porque lo que estoy viviendo es lo mejor que me pudo pasar. Me falta, pero estoy feliz, clara y con ganas de concretar mi propósito. Lo hago por mis hijos, por mí, y porque sé que con amor… siempre se puede.",
     },
   ];
@@ -132,21 +122,12 @@ export default function InicioPage() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <Card key={index} className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <CardHeader className="flex flex-row items-center gap-4">
-                <Avatar className="h-16 w-16">
-                  <AvatarImage src={testimonial.avatarUrl} alt={testimonial.name} data-ai-hint={testimonial.aiHint} />
-                  <AvatarFallback>{testimonial.name.substring(0, 2).toUpperCase()}</AvatarFallback>
-                </Avatar>
-                <div>
-                  <CardTitle className="text-xl">{testimonial.name}</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="flex-grow relative">
-                <Quote className="absolute top-0 left-0 h-8 w-8 text-primary/30 transform -translate-x-2 -translate-y-2" />
-                <p className="text-sm text-foreground/80 italic leading-relaxed pl-4">
+              <CardContent className="flex-grow relative pt-8 pb-8"> {/* Added padding top/bottom */}
+                <Quote className="absolute top-2 left-2 h-8 w-8 text-primary/30 transform -translate-x-1 -translate-y-1" />
+                <p className="text-sm text-foreground/80 italic leading-relaxed px-4">
                   {testimonial.testimonial}
                 </p>
-                <Quote className="absolute bottom-0 right-0 h-8 w-8 text-primary/30 transform translate-x-2 translate-y-2 rotate-180" />
+                <Quote className="absolute bottom-2 right-2 h-8 w-8 text-primary/30 transform translate-x-1 translate-y-1 rotate-180" />
               </CardContent>
             </Card>
           ))}
