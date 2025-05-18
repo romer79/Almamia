@@ -12,12 +12,12 @@ export default function InicioPage() {
   ];
 
   const courseModules = [
-    { title: "Introducción a la Biodecodificación", description: "Fundamentos, historia y principios clave." },
-    { title: "El Transgeneracional", description: "Cómo las historias familiares impactan tu presente." },
-    { title: "Proyecto Sentido Gestacional", description: "La influencia de la concepción, embarazo y nacimiento." },
-    { title: "Conflictos Biológicos y Emocionales", description: "Descodificando síntomas y enfermedades comunes." },
-    { title: "Herramientas Terapéuticas", description: "Protocolos y técnicas para la sanación." },
-    { title: "Práctica y Aplicación", description: "Estudios de caso y ejercicios prácticos." },
+    { title: "La Enfermedad como Solución: Una Nueva Mirada para Entender tu Cuerpo", description: "" },
+    { title: "Autobiodecodificación: Descubre la Raíz Psicológica de tus Enfermedades, Traumas y Conflictos Vinculares", description: "" },
+    { title: "Del Estrés al Síntoma: La Conexión Científica entre Tu Mente y Tu Salud Revelada", description: "" },
+    { title: "Biodecodifica tu Propia Historia: Encuentra el Conflicto que Desencadenó Tu Realidad Actual", description: "" },
+    { title: "Agradece a Tu Cuerpo: Cómo la Biodecodificación Te Muestra la Solución para Tu Supervivencia", description: "" },
+    { title: "Sanación Profunda: Aprende a Trabajar la Raíz Psicológica para Evitar Recaídas", description: "" },
   ];
 
   const testimonials = [
@@ -105,7 +105,9 @@ export default function InicioPage() {
           {courseModules.map((module, index) => (
             <div key={index} className="p-4 border rounded-lg bg-secondary/50">
               <h3 className="font-semibold text-primary">{module.title}</h3>
-              <p className="text-sm text-foreground/80">{module.description}</p>
+              {module.description && (
+                <p className="text-sm text-foreground/80 mt-1">{module.description}</p>
+              )}
             </div>
           ))}
         </CardContent>
@@ -144,3 +146,4 @@ export default function InicioPage() {
     </div>
   );
 }
+
