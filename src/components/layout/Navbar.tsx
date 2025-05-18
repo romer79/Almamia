@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Briefcase, LogOut, UserCircle, Menu } from 'lucide-react'; // Removed Settings as it's not used
+import { Home, LogOut, UserCircle, Menu } from 'lucide-react'; // Removed Briefcase
 import { Logo } from '@/components/Logo';
 import { Button } from '@/components/ui/button';
 import {
@@ -15,14 +15,14 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Separator } from "@/components/ui/separator"; // Added import for Separator
+import { Separator } from "@/components/ui/separator";
 import { useAuth } from '@/hooks/useAuth';
 import { cn } from '@/lib/utils';
 import React from 'react';
 
 const navItems = [
   { href: '/inicio', label: 'Inicio', icon: Home },
-  { href: '/herramientas', label: 'Herramientas', icon: Briefcase },
+  // { href: '/herramientas', label: 'Herramientas', icon: Briefcase }, // Removed Herramientas
 ];
 
 export function Navbar() {
@@ -96,35 +96,37 @@ export function Navbar() {
              </Button>
           )}
 
-          <div className="md:hidden">
-            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Abrir menú</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[280px] p-6 pt-12">
-                <nav className="flex flex-col gap-4">
-                  <NavLinks isMobile={true} />
-                </nav>
-                {user && (
-                  <>
-                    <Separator className="my-6" />
-                     {/* 
-                        Similar to DropdownMenuItem, Button has variants, but specific color overrides
-                        are sometimes needed for very specific destructive actions like this logout
-                        in a mobile menu.
-                      */}
-                     <Button onClick={() => {logout(); setMobileMenuOpen(false);}} variant="outline" className="w-full text-red-500 border-red-500 hover:bg-red-500/10 hover:text-red-500">
-                      <LogOut className="mr-2 h-4 w-4" />
-                      Cerrar Sesión
-                    </Button>
-                  </>
-                )}
-              </SheetContent>
-            </Sheet>
-          </div>
+          {navItems.length > 0 && (
+            <div className="md:hidden">
+              <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon">
+                    <Menu className="h-6 w-6" />
+                    <span className="sr-only">Abrir menú</span>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[280px] p-6 pt-12">
+                  <nav className="flex flex-col gap-4">
+                    <NavLinks isMobile={true} />
+                  </nav>
+                  {user && (
+                    <>
+                      <Separator className="my-6" />
+                      {/* 
+                          Similar to DropdownMenuItem, Button has variants, but specific color overrides
+                          are sometimes needed for very specific destructive actions like this logout
+                          in a mobile menu.
+                        */}
+                      <Button onClick={() => {logout(); setMobileMenuOpen(false);}} variant="outline" className="w-full text-red-500 border-red-500 hover:bg-red-500/10 hover:text-red-500">
+                        <LogOut className="mr-2 h-4 w-4" />
+                        Cerrar Sesión
+                      </Button>
+                    </>
+                  )}
+                </SheetContent>
+              </Sheet>
+            </div>
+          )}
         </div>
       </div>
     </header>
