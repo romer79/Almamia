@@ -1,6 +1,7 @@
 // src/app/(main)/inicio/page.tsx
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle, Zap, Heart, Brain, BookOpen, Users } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { CheckCircle, Zap, Heart, Brain, BookOpen, Users, Quote } from "lucide-react";
 import Image from "next/image";
 
 export default function InicioPage() {
@@ -20,8 +21,29 @@ export default function InicioPage() {
     { title: "Práctica y Aplicación", description: "Estudios de caso y ejercicios prácticos." },
   ];
 
+  const testimonials = [
+    {
+      name: "Ana Pérez",
+      avatarUrl: "https://placehold.co/100x100.png",
+      aiHint: "woman portrait",
+      testimonial: "Este curso cambió mi vida. Pude entender y sanar heridas que no sabía que tenía. ¡Totalmente recomendado!",
+    },
+    {
+      name: "Carlos López",
+      avatarUrl: "https://placehold.co/100x100.png",
+      aiHint: "man portrait",
+      testimonial: "La Biodecodificación me abrió un nuevo mundo de autoconocimiento. Las herramientas son muy prácticas y el acompañamiento es excelente.",
+    },
+    {
+      name: "Laura Gómez",
+      avatarUrl: "https://placehold.co/100x100.png",
+      aiHint: "person smiling",
+      testimonial: "Alma Mia no es solo un curso, es una comunidad. Me sentí sostenida y comprendida en todo momento. ¡Gracias!",
+    },
+  ];
+
   return (
-    <div className="space-y-12">
+    <div className="space-y-16"> {/* Increased spacing between sections */}
       <section className="text-center">
         <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl lg:text-6xl">
           Bienvenido a Alma Mia
@@ -56,7 +78,7 @@ export default function InicioPage() {
             </div>
             <div className="rounded-lg overflow-hidden shadow-md">
               <Image
-                src="https://picsum.photos/seed/biodecoding/600/400"
+                src="https://placehold.co/600x400.png"
                 alt="Concepto de Biodecodificación"
                 width={600}
                 height={400}
@@ -98,6 +120,38 @@ export default function InicioPage() {
           ))}
         </CardContent>
       </Card>
+
+      {/* Testimonials Section */}
+      <section className="space-y-8">
+        <div className="text-center">
+          <h2 className="text-3xl font-semibold text-primary mb-2">Lo que dicen nuestros alumnos</h2>
+          <p className="text-lg text-foreground/80">
+            Experiencias reales de transformación y crecimiento.
+          </p>
+        </div>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((testimonial, index) => (
+            <Card key={index} className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <CardHeader className="flex flex-row items-center gap-4">
+                <Avatar className="h-16 w-16">
+                  <AvatarImage src={testimonial.avatarUrl} alt={testimonial.name} data-ai-hint={testimonial.aiHint} />
+                  <AvatarFallback>{testimonial.name.substring(0, 2)}</AvatarFallback>
+                </Avatar>
+                <div>
+                  <CardTitle className="text-xl">{testimonial.name}</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="flex-grow relative">
+                <Quote className="absolute top-0 left-0 h-8 w-8 text-primary/30 transform -translate-x-2 -translate-y-2" />
+                <p className="text-sm text-foreground/80 italic leading-relaxed pl-4">
+                  {testimonial.testimonial}
+                </p>
+                <Quote className="absolute bottom-0 right-0 h-8 w-8 text-primary/30 transform translate-x-2 translate-y-2 rotate-180" />
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
 
       <div className="text-center">
          <CheckCircle className="h-16 w-16 text-accent mx-auto mb-4" />
