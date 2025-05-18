@@ -23,22 +23,22 @@ export default function InicioPage() {
 
   const testimonials = [
     {
-      name: "Ana Pérez",
+      name: "Participante Anónimo",
       avatarUrl: "https://placehold.co/100x100.png",
-      aiHint: "woman portrait",
-      testimonial: "Este curso cambió mi vida. Pude entender y sanar heridas que no sabía que tenía. ¡Totalmente recomendado!",
+      aiHint: "person happy",
+      testimonial: "Mi experiencia con la biodecodificación cambió mi vida por completo. Aprendí a vivir sin dolor, a transformar mis pensamientos, y a sanar desde el alma y el corazón. La bio vino a salvar vidas. Hoy sé que estamos a tiempo de ser felices y vivir como lo merecemos.",
     },
     {
-      name: "Carlos López",
+      name: "Estudiante Agradecida",
       avatarUrl: "https://placehold.co/100x100.png",
-      aiHint: "man portrait",
-      testimonial: "La Biodecodificación me abrió un nuevo mundo de autoconocimiento. Las herramientas son muy prácticas y el acompañamiento es excelente.",
+      aiHint: "woman thankful",
+      testimonial: "Quiero agradecerte por esta invitación y por compartir ese don tan hermoso que Dios te dio. Enseñás con tanto amor que solo puedo felicitarte de corazón. Que San Gabriel te guíe siempre. ¡Te quiero mucho Kari, genia total!",
     },
     {
-      name: "Laura Gómez",
+      name: "Viajero Interior",
       avatarUrl: "https://placehold.co/100x100.png",
-      aiHint: "person smiling",
-      testimonial: "Alma Mia no es solo un curso, es una comunidad. Me sentí sostenida y comprendida en todo momento. ¡Gracias!",
+      aiHint: "person content",
+      testimonial: "Siento que este proceso me ayudó a encontrarme, a ser más consciente, a frenar antes de explotar. Ya casi ni me molesta no salir de vacaciones, porque lo que estoy viviendo es lo mejor que me pudo pasar. Me falta, pero estoy feliz, clara y con ganas de concretar mi propósito. Lo hago por mis hijos, por mí, y porque sé que con amor… siempre se puede.",
     },
   ];
 
@@ -135,7 +135,7 @@ export default function InicioPage() {
               <CardHeader className="flex flex-row items-center gap-4">
                 <Avatar className="h-16 w-16">
                   <AvatarImage src={testimonial.avatarUrl} alt={testimonial.name} data-ai-hint={testimonial.aiHint} />
-                  <AvatarFallback>{testimonial.name.substring(0, 2)}</AvatarFallback>
+                  <AvatarFallback>{testimonial.name.substring(0, 2).toUpperCase()}</AvatarFallback>
                 </Avatar>
                 <div>
                   <CardTitle className="text-xl">{testimonial.name}</CardTitle>
