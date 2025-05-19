@@ -37,7 +37,7 @@ export default function InicioPage() {
     <div className="space-y-16"> {/* Increased spacing between sections */}
       <section className="text-center">
         <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl lg:text-6xl">
-          Bienvenido a Alma Mia
+          Bienvenido a Alma Mía
         </h1>
         <p className="mt-6 text-lg leading-8 text-foreground/80">
           Descubre el poder transformador de la Biodecodificación y sana tu vida desde la raíz.
@@ -147,3 +147,4 @@ export default function InicioPage() {
     </div>
   );
 }
+
