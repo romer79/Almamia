@@ -1,3 +1,4 @@
+
 // src/app/(main)/inicio/page.tsx
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Zap, Heart, Brain, BookOpen, Users, Quote } from "lucide-react";
@@ -54,7 +55,7 @@ export default function InicioPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-8 items-start"> {/* Changed items-center to items-start */}
             <div>
               <p className="text-foreground/90 mb-4">
                 La Biodecodificación es un enfoque terapéutico que busca el origen emocional y transgeneracional
@@ -66,14 +67,14 @@ export default function InicioPage() {
                 en tu vida, abriendo el camino hacia una salud plena y una mayor consciencia.
               </p>
             </div>
-            <div className="rounded-lg overflow-hidden shadow-md md:max-w-md"> {/* Changed md:max-w-lg to md:max-w-md */}
+            <div className="rounded-lg overflow-hidden shadow-md md:max-w-xs"> {/* Changed md:max-w-md to md:max-w-xs */}
               <Image
                 src="https://i.imgur.com/Ie2M1zA.jpeg"
-                alt="Concepto de Biodecodificación"
-                width={480} // Reduced width
-                height={320} // Reduced height
+                alt="Instructora del curso Alma Mia posando sonriente" // More descriptive alt text
+                width={300} // Adjusted width for 3:4 aspect ratio and smaller size
+                height={400} // Adjusted height for 3:4 aspect ratio
                 className="object-cover w-full h-auto"
-                data-ai-hint="meditation energy"
+                data-ai-hint="woman portrait" // Adjusted AI hint
               />
             </div>
           </div>
@@ -146,3 +147,5 @@ export default function InicioPage() {
     </div>
   );
 }
+
+    
