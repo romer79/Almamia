@@ -66,14 +66,14 @@ export default function InicioPage() {
                 en tu vida, abriendo el camino hacia una salud plena y una mayor consciencia.
               </p>
             </div>
-            <div className="rounded-lg overflow-hidden shadow-md">
+            <div className="rounded-lg overflow-hidden shadow-md md:max-w-lg">
               <Image
                 src="https://i.imgur.com/Ie2M1zA.jpeg"
                 alt="Concepto de Biodecodificación"
-                width={600}
-                height={400}
-                className="object-cover w-full h-full"
-                data-ai-hint="logo spiritual"
+                width={480}
+                height={320}
+                className="object-cover w-full h-auto"
+                data-ai-hint="meditation energy"
               />
             </div>
           </div>
