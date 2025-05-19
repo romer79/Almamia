@@ -79,10 +79,10 @@ export default function InicioPage() {
                 />
               </div>
               <div className="mt-4">
-                <p className="text-lg font-semibold text-primary">Karina Pasamán</p>
-                <p className="text-sm text-foreground/80">Bioquímica</p>
-                <p className="text-sm text-foreground/80">Docente</p>
-                <p className="text-sm text-foreground/80">Terapeuta de Biodecodificación</p>
+                <p className="text-base font-semibold text-primary">Karina Pasamán</p>
+                <p className="text-xs text-foreground/80">Bioquímica</p>
+                <p className="text-xs text-foreground/80">Docente</p>
+                <p className="text-xs text-foreground/80">Terapeuta de Biodecodificación</p>
               </div>
             </div>
           </div>
