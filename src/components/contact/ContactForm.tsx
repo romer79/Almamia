@@ -1,8 +1,8 @@
 // src/components/contact/ContactForm.tsx
 "use client";
 
-import { useFormStatus, useFormState } from "react-dom"; // useFormState from react-dom
-import { useEffect } from "react";
+import { useFormStatus } from "react-dom";
+import { useEffect, useActionState } from "react"; // Changed useFormState to useActionState and imported from "react"
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -24,13 +24,14 @@ const initialState: ContactFormState = null;
 
 export function ContactForm() {
   const { toast } = useToast();
-  const [state, formAction] = useFormState(submitContactFormAction, initialState);
+  // Changed useFormState to useActionState
+  const [state, formAction] = useActionState(submitContactFormAction, initialState);
 
   useEffect(() => {
     if (state?.success && state.message) {
       toast({ title: "Mensaje Enviado", description: state.message });
       // Aquí podrías resetear el formulario si tuvieras acceso a los inputs
-      // Por ahora, con Server Actions y useFormState, el reseteo manual es más complejo.
+      // Por ahora, con Server Actions y useActionState, el reseteo manual es más complejo.
       // Se podría limpiar el estado si el formulario se desmonta y remonta o con una key.
     } else if (state?.error && !state.fieldErrors) { // Error general del formulario
       toast({ title: "Error al Enviar", description: state.error, variant: "destructive" });
