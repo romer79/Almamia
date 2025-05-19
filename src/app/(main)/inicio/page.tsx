@@ -2,12 +2,14 @@
 "use client"; // Required for hooks like useState, useEffect
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle, Zap, Heart, Brain, BookOpen, Users, Quote } from "lucide-react";
+import { CheckCircle, Zap, Heart, Brain, BookOpen, Users, Quote, X } from "lucide-react"; // Added X icon
 import Image from "next/image";
 import { CoursePromoModal, usePromoModalState } from '@/components/promo/CoursePromoModal';
+import React, { useState } from 'react'; // Added useState
 
 export default function InicioPage() {
   const { isPromoModalOpen, setIsPromoModalOpen } = usePromoModalState();
+  const [isFixedAdVisible, setIsFixedAdVisible] = useState(true); // State for fixed ad visibility
 
   const courseBenefits = [
     { icon: Heart, text: "Sanación emocional profunda y liberación de patrones limitantes." },
@@ -160,19 +162,28 @@ export default function InicioPage() {
       </div>
 
       {/* Anuncio fijo en la esquina inferior derecha */}
-      <div className="fixed bottom-4 right-4 z-50 p-2 bg-card border border-border rounded-lg shadow-lg w-48 md:w-60">
-        <Image
-          src="https://i.imgur.com/zGPkHSn.jpeg"
-          alt="Promoción Curso Alma Mía"
-          width={240} 
-          height={240} 
-          className="object-contain w-full h-auto rounded"
-          data-ai-hint="course promotion flyer"
-        />
-        <p className="text-xs text-center mt-2 text-foreground/80">
-          ¡Nuevo curso disponible! <a href="#" onClick={(e) => { e.preventDefault(); setIsPromoModalOpen(true); }} className="text-primary hover:underline">Más info</a>
-        </p>
-      </div>
+      {isFixedAdVisible && (
+        <div className="fixed bottom-4 right-4 z-50 p-2 bg-card border border-border rounded-lg shadow-lg w-48 md:w-60">
+          <button 
+            onClick={() => setIsFixedAdVisible(false)}
+            className="absolute -top-2 -right-2 bg-background text-foreground rounded-full p-0.5 border border-border hover:bg-muted z-10"
+            aria-label="Cerrar anuncio"
+          >
+            <X className="h-4 w-4" />
+          </button>
+          <Image
+            src="https://i.imgur.com/zGPkHSn.jpeg"
+            alt="Promoción Curso Alma Mía"
+            width={240} 
+            height={240} 
+            className="object-contain w-full h-auto rounded"
+            data-ai-hint="course promotion flyer"
+          />
+          <p className="text-xs text-center mt-2 text-foreground/80">
+            ¡Nuevo curso disponible! <a href="#" onClick={(e) => { e.preventDefault(); setIsPromoModalOpen(true); }} className="text-primary hover:underline">Más info</a>
+          </p>
+        </div>
+      )}
     </>
   );
 }
