@@ -55,7 +55,7 @@ export default function InicioPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-8 items-start"> {/* Changed items-center to items-start */}
+          <div className="grid md:grid-cols-2 gap-8 items-start">
             <div>
               <p className="text-foreground/90 mb-4">
                 La Biodecodificación es un enfoque terapéutico que busca el origen emocional y transgeneracional
@@ -67,14 +67,14 @@ export default function InicioPage() {
                 en tu vida, abriendo el camino hacia una salud plena y una mayor consciencia.
               </p>
             </div>
-            <div className="rounded-lg overflow-hidden shadow-md md:max-w-xs"> {/* Changed md:max-w-md to md:max-w-xs */}
+            <div className="rounded-lg overflow-hidden shadow-md md:max-w-[240px] mx-auto">
               <Image
                 src="https://i.imgur.com/Ie2M1zA.jpeg"
-                alt="Instructora del curso Alma Mia posando sonriente" // More descriptive alt text
-                width={300} // Adjusted width for 3:4 aspect ratio and smaller size
-                height={400} // Adjusted height for 3:4 aspect ratio
+                alt="Instructora del curso Alma Mia posando sonriente"
+                width={300} // Aspect ratio 3:4, actual width will be controlled by parent div
+                height={400} // Aspect ratio 3:4, actual height will be calculated
                 className="object-cover w-full h-auto"
-                data-ai-hint="woman portrait" // Adjusted AI hint
+                data-ai-hint="woman portrait"
               />
             </div>
           </div>
@@ -147,5 +147,3 @@ export default function InicioPage() {
     </div>
   );
 }
-
-    
