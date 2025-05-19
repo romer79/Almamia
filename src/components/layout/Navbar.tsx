@@ -15,7 +15,7 @@ import { Button } from '@/components/ui/button';
 //   DropdownMenuTrigger,
 // } from '@/components/ui/dropdown-menu';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Separator } from "@/components/ui/separator";
+// import { Separator } from "@/components/ui/separator"; // No longer needed after removing user menu
 // import { useAuth } from '@/hooks/useAuth'; // No longer needed
 import { cn } from '@/lib/utils';
 import React from 'react';
@@ -53,7 +53,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
-        <Logo size="text-xl" iconSize="h-7 w-7" />
+        <Logo size="text-xl" />
         
         <nav className="hidden items-center gap-4 md:flex">
           <NavLinks />

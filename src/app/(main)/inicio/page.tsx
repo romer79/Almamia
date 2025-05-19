@@ -13,7 +13,7 @@ export default function InicioPage() {
 
   const courseModules = [
     { title: "La Enfermedad como Solución", description: "Una Nueva Mirada para Entender tu Cuerpo" },
-    { title: "Autobiodecodificación", description: "Descubre la Raíz Psicológica de tus Enfermedades, Traumas y Conflictos Vinculares" },
+    { title: "Auto Biodecodificación", description: "Descubre la Raíz Psicológica de tus Enfermedades, Traumas y Conflictos Vinculares" },
     { title: "Del Estrés al Síntoma", description: "La Conexión Científica entre Tu Mente y Tu Salud Revelada" },
     { title: "Biodecodifica tu Propia Historia", description: "Encuentra el Conflicto que Desencadenó Tu Realidad Actual" },
     { title: "Agradece a Tu Cuerpo", description: "Cómo la Biodecodificación Te Muestra la Solución para Tu Supervivencia" },
@@ -47,7 +47,7 @@ export default function InicioPage() {
         <CardHeader>
           <CardTitle className="text-3xl flex items-center gap-2">
             <BookOpen className="h-8 w-8 text-primary" />
-            <span>Nuestro Curso de Biodecodificación</span>
+            <span>Nuestro Curso de Auto Biodecodificación</span>
           </CardTitle>
           <CardDescription>
             Un viaje profundo hacia el autoconocimiento y la sanación integral.

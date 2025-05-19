@@ -32,7 +32,7 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-background to-secondary p-4">
       <div className="mb-8">
-        <Logo size="text-4xl" iconSize="h-12 w-12" />
+        <Logo size="text-4xl" />
       </div>
       <Loader2 className="h-12 w-12 animate-spin text-primary" />
       <p className="mt-4 text-lg text-foreground">Redirigiendo...</p>
