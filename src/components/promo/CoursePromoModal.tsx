@@ -7,7 +7,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogC
 import { Button } from "@/components/ui/button";
 import { X, ArrowRight } from 'lucide-react';
 
-const PROMO_MODAL_DISMISSED_KEY = 'almaMiaCoursePromoDismissed_v1';
+// PROMO_MODAL_DISMISSED_KEY is no longer used
+// const PROMO_MODAL_DISMISSED_KEY = 'almaMiaCoursePromoDismissed_v1';
 
 interface CoursePromoModalProps {
   isOpen: boolean;
@@ -24,12 +25,8 @@ export function CoursePromoModal({ isOpen, onClose }: CoursePromoModalProps) {
     }
   }, [isOpen]);
 
-  const handleCloseAndDismiss = () => {
-    try {
-      localStorage.setItem(PROMO_MODAL_DISMISSED_KEY, 'true');
-    } catch (error) {
-      console.warn("Could not save promo dismissal to localStorage", error);
-    }
+  // handleCloseAndDismiss no longer interacts with localStorage
+  const handleClose = () => {
     onClose();
   };
 
@@ -38,7 +35,7 @@ export function CoursePromoModal({ isOpen, onClose }: CoursePromoModalProps) {
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={(open) => !open && handleCloseAndDismiss()}>
+    <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
       <DialogContent className={cn("p-0 overflow-hidden", isExpanded ? "sm:max-w-[500px]" : "sm:max-w-[420px]")}>
         {!isExpanded ? (
           <>
@@ -51,7 +48,7 @@ export function CoursePromoModal({ isOpen, onClose }: CoursePromoModalProps) {
               </p>
             </div>
             <DialogFooter className="p-6 pt-2 flex flex-col sm:flex-row justify-center gap-3">
-              <Button onClick={handleCloseAndDismiss} variant="outline" size="lg">
+              <Button onClick={handleClose} variant="outline" size="lg">
                 Ahora no
               </Button>
               <Button onClick={handleExpand} size="lg" className="bg-primary hover:bg-primary/90">
@@ -70,12 +67,12 @@ export function CoursePromoModal({ isOpen, onClose }: CoursePromoModalProps) {
                 alt="Promoción Curso Alma Mía"
                 width={1080}
                 height={1080}
-                className="object-contain w-full h-auto max-h-[65vh]" // Adjusted max-h for slightly better fit
+                className="object-contain w-full h-auto max-h-[65vh]"
                 data-ai-hint="course promotion flyer"
               />
             </div>
             <DialogFooter className="p-6 pt-4 flex justify-center">
-              <Button onClick={handleCloseAndDismiss} variant="outline" size="lg">
+              <Button onClick={handleClose} variant="outline" size="lg">
                 Entendido
               </Button>
             </DialogFooter>
@@ -85,7 +82,7 @@ export function CoursePromoModal({ isOpen, onClose }: CoursePromoModalProps) {
             <button
                 className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
                 aria-label="Cerrar"
-                onClick={handleCloseAndDismiss} // Ensure X button also dismisses permanently
+                onClick={handleClose} // X button also just closes
             >
                 <X className="h-5 w-5" />
             </button>
@@ -99,21 +96,11 @@ export const usePromoModalState = () => {
   const [isPromoModalOpen, setIsPromoModalOpen] = useState(false);
 
   useEffect(() => {
-    let dismissed = false;
-    try {
-      dismissed = localStorage.getItem(PROMO_MODAL_DISMISSED_KEY) === 'true';
-    } catch (error) {
-      console.warn("Could not read promo dismissal from localStorage", error);
-      dismissed = true; 
-    }
-    
-    if (!dismissed) {
-      // Set a small delay to ensure the page is somewhat loaded before showing the modal
-      const timer = setTimeout(() => {
-        setIsPromoModalOpen(true);
-      }, 500); // 0.5 second delay
-      return () => clearTimeout(timer);
-    }
+    // Removed localStorage check. Modal will try to open on every page load for /inicio.
+    const timer = setTimeout(() => {
+      setIsPromoModalOpen(true);
+    }, 500); // 0.5 second delay
+    return () => clearTimeout(timer);
   }, []);
 
   return { isPromoModalOpen, setIsPromoModalOpen };

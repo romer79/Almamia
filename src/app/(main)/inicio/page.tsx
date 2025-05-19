@@ -158,6 +158,21 @@ export default function InicioPage() {
           </p>
         </div>
       </div>
+
+      {/* Anuncio fijo en la esquina inferior derecha */}
+      <div className="fixed bottom-4 right-4 z-50 p-2 bg-card border border-border rounded-lg shadow-lg w-48 md:w-60">
+        <Image
+          src="https://i.imgur.com/zGPkHSn.jpeg"
+          alt="Promoción Curso Alma Mía"
+          width={240} 
+          height={240} 
+          className="object-contain w-full h-auto rounded"
+          data-ai-hint="course promotion flyer"
+        />
+        <p className="text-xs text-center mt-2 text-foreground/80">
+          ¡Nuevo curso disponible! <a href="#" onClick={(e) => { e.preventDefault(); setIsPromoModalOpen(true); }} className="text-primary hover:underline">Más info</a>
+        </p>
+      </div>
     </>
   );
 }
