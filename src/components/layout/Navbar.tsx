@@ -3,30 +3,29 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, LogOut, UserCircle, Menu } from 'lucide-react'; // Removed Briefcase
+import { Home, Menu } from 'lucide-react'; // Removed UserCircle, LogOut
 import { Logo } from '@/components/Logo';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+// import { // Dropdown components no longer needed for user menu
+//   DropdownMenu,
+//   DropdownMenuContent,
+//   DropdownMenuItem,
+//   DropdownMenuLabel,
+//   DropdownMenuSeparator,
+//   DropdownMenuTrigger,
+// } from '@/components/ui/dropdown-menu';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import { useAuth } from '@/hooks/useAuth';
+// import { useAuth } from '@/hooks/useAuth'; // No longer needed
 import { cn } from '@/lib/utils';
 import React from 'react';
 
 const navItems = [
   { href: '/inicio', label: 'Inicio', icon: Home },
-  // { href: '/herramientas', label: 'Herramientas', icon: Briefcase }, // Removed Herramientas
 ];
 
 export function Navbar() {
-  const { user, logout } = useAuth();
+  // const { user, logout } = useAuth(); // user and logout no longer needed
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
@@ -61,7 +60,8 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          {user ? (
+          {/* User Dropdown Menu Removed */}
+          {/* {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-10 w-10 rounded-full">
@@ -78,12 +78,6 @@ export function Navbar() {
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                {/* 
-                  The destructive styles are applied directly here because DropdownMenuItem does not
-                  natively support a "destructive" variant. ShadCN's Button component does have it,
-                  but for DropdownMenuItem, direct Tailwind classes are used for such styling needs
-                  when a variant isn't available.
-                */}
                 <DropdownMenuItem onClick={logout} className="cursor-pointer text-red-500 hover:!text-red-500 focus:!text-red-500 focus:!bg-red-500/10">
                   <LogOut className="mr-2 h-4 w-4" />
                   Cerrar Sesión
@@ -94,7 +88,7 @@ export function Navbar() {
              <Button asChild variant="default" size="sm">
                <Link href="/">Iniciar Sesión</Link>
              </Button>
-          )}
+          )} */}
 
           {navItems.length > 0 && (
             <div className="md:hidden">
@@ -109,20 +103,16 @@ export function Navbar() {
                   <nav className="flex flex-col gap-4">
                     <NavLinks isMobile={true} />
                   </nav>
-                  {user && (
+                  {/* Logout button in mobile menu removed */}
+                  {/* {user && (
                     <>
                       <Separator className="my-6" />
-                      {/* 
-                          Similar to DropdownMenuItem, Button has variants, but specific color overrides
-                          are sometimes needed for very specific destructive actions like this logout
-                          in a mobile menu.
-                        */}
                       <Button onClick={() => {logout(); setMobileMenuOpen(false);}} variant="outline" className="w-full text-red-500 border-red-500 hover:bg-red-500/10 hover:text-red-500">
                         <LogOut className="mr-2 h-4 w-4" />
                         Cerrar Sesión
                       </Button>
                     </>
-                  )}
+                  )} */}
                 </SheetContent>
               </Sheet>
             </div>

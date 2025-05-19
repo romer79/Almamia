@@ -2,8 +2,9 @@
 "use client";
 
 import type { ReactNode } from 'react';
-import React, { createContext, useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { createContext, useCallback } from 'react';
+// import { useRouter } from 'next/navigation'; // No longer needed for simplified auth
+// import { useState, useEffect } from 'react'; // No longer needed for simplified auth
 
 interface User {
   id: string;
@@ -21,46 +22,50 @@ interface AuthContextType {
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const AUTH_STORAGE_KEY = 'almaMiaUser';
+// const AUTH_STORAGE_KEY = 'almaMiaUser'; // No longer used as auth is disabled
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  const router = useRouter();
+  // const [user, setUser] = useState<User | null>(null); // Simplified
+  // const [loading, setLoading] = useState(true); // Simplified
+  // const router = useRouter(); // No longer needed here
 
-  useEffect(() => {
-    try {
-      const storedUser = localStorage.getItem(AUTH_STORAGE_KEY);
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
-      }
-    } catch (error) {
-      console.error("Error reading from localStorage", error);
-      localStorage.removeItem(AUTH_STORAGE_KEY); // Clear corrupted data
-    } finally {
-      setLoading(false);
-    }
+  // useEffect(() => { // Removed: No longer loading user from localStorage
+  //   try {
+  //     const storedUser = localStorage.getItem(AUTH_STORAGE_KEY);
+  //     if (storedUser) {
+  //       setUser(JSON.parse(storedUser));
+  //     }
+  //   } catch (error) {
+  //     console.error("Error reading from localStorage", error);
+  //     localStorage.removeItem(AUTH_STORAGE_KEY); // Clear corrupted data
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }, []);
+
+  const user: User | null = null; // User is always null as login is disabled
+  const loading = false; // Loading is always false
+
+  const login = useCallback((_userData: User) => {
+    // localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(userData)); // Disabled
+    // setUser(userData); // Disabled
+    // router.push('/inicio'); // Disabled
+    // console.log("Login function bypassed as authentication is currently disabled.");
   }, []);
 
-  const login = useCallback((userData: User) => {
-    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(userData));
-    setUser(userData);
-    router.push('/inicio');
-  }, [router]);
-
   const logout = useCallback(() => {
-    localStorage.removeItem(AUTH_STORAGE_KEY);
-    setUser(null);
-    router.push('/');
-  }, [router]);
+    // localStorage.removeItem(AUTH_STORAGE_KEY); // Disabled
+    // setUser(null); // Disabled
+    // router.push('/'); // Disabled
+    // console.log("Logout function bypassed as authentication is currently disabled.");
+  }, []);
 
-  const register = useCallback((userData: User) => {
-    // In a real app, this would likely also call an API
-    // For now, we just log them in directly after "registration"
-    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(userData));
-    setUser(userData);
-    router.push('/inicio');
-  }, [router]);
+  const register = useCallback((_userData: User) => {
+    // localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(userData)); // Disabled
+    // setUser(userData); // Disabled
+    // router.push('/inicio'); // Disabled
+    // console.log("Register function bypassed as authentication is currently disabled.");
+  }, []);
 
   return (
     <AuthContext.Provider value={{ user, loading, login, logout, register }}>
