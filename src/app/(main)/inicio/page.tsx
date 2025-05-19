@@ -14,7 +14,7 @@ export default function InicioPage() {
 
   const courseModules = [
     { title: "La Enfermedad como Solución", description: "Una Nueva Mirada para Entender tu Cuerpo" },
-    { title: "Auto Biodecodificación", description: "Descubre la Raíz Psicológica de tus Enfermedades, Traumas y Conflictos Vinculares" },
+    { title: "Auto Biodecodificación", description: "Descubre la Raíz Psicológica de tus Enfermedades, Traumas y Conflictos Vinculares" }, // Corrected title based on previous request
     { title: "Del Estrés al Síntoma", description: "La Conexión Científica entre Tu Mente y Tu Salud Revelada" },
     { title: "Biodecodifica tu Propia Historia", description: "Encuentra el Conflicto que Desencadenó Tu Realidad Actual" },
     { title: "Agradece a Tu Cuerpo", description: "Cómo la Biodecodificación Te Muestra la Solución para Tu Supervivencia" },
@@ -67,15 +67,23 @@ export default function InicioPage() {
                 en tu vida, abriendo el camino hacia una salud plena y una mayor consciencia.
               </p>
             </div>
-            <div className="rounded-lg overflow-hidden shadow-md md:max-w-[240px] mx-auto">
-              <Image
-                src="https://i.imgur.com/Ie2M1zA.jpeg" 
-                alt="Instructora del curso Alma Mia posando sonriente"
-                width={300} // Aspect ratio 3:4, actual width will be controlled by parent div
-                height={400} // Aspect ratio 3:4, actual height will be calculated
-                className="object-cover w-full h-auto"
-                data-ai-hint="woman portrait"
-              />
+            <div className="flex flex-col items-center text-center"> {/* Centered content */}
+              <div className="rounded-lg overflow-hidden shadow-md md:max-w-[240px] mx-auto">
+                <Image
+                  src="https://i.imgur.com/Ie2M1zA.jpeg" 
+                  alt="Karina Pasamán, instructora del curso Alma Mia" // More descriptive alt text
+                  width={300} 
+                  height={400} 
+                  className="object-cover w-full h-auto"
+                  data-ai-hint="woman portrait"
+                />
+              </div>
+              <div className="mt-4">
+                <p className="text-lg font-semibold text-primary">Karina Pasamán</p>
+                <p className="text-sm text-foreground/80">Bioquímica</p>
+                <p className="text-sm text-foreground/80">Docente</p>
+                <p className="text-sm text-foreground/80">Terapeuta de Biodecodificación</p>
+              </div>
             </div>
           </div>
         </CardContent>
