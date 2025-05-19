@@ -1,10 +1,14 @@
-
 // src/app/(main)/inicio/page.tsx
+"use client"; // Required for hooks like useState, useEffect
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Zap, Heart, Brain, BookOpen, Users, Quote } from "lucide-react";
 import Image from "next/image";
+import { CoursePromoModal, usePromoModalState } from '@/components/promo/CoursePromoModal';
 
 export default function InicioPage() {
+  const { isPromoModalOpen, setIsPromoModalOpen } = usePromoModalState();
+
   const courseBenefits = [
     { icon: Heart, text: "Sanación emocional profunda y liberación de patrones limitantes." },
     { icon: Brain, text: "Comprensión del origen emocional de síntomas físicos y enfermedades." },
@@ -14,7 +18,7 @@ export default function InicioPage() {
 
   const courseModules = [
     { title: "La Enfermedad como Solución", description: "Una Nueva Mirada para Entender tu Cuerpo" },
-    { title: "Auto Biodecodificación", description: "Descubre la Raíz Psicológica de tus Enfermedades, Traumas y Conflictos Vinculares" }, // Corrected title based on previous request
+    { title: "Autobiodecodificación", description: "Descubre la Raíz Psicológica de tus Enfermedades, Traumas y Conflictos Vinculares" },
     { title: "Del Estrés al Síntoma", description: "La Conexión Científica entre Tu Mente y Tu Salud Revelada" },
     { title: "Biodecodifica tu Propia Historia", description: "Encuentra el Conflicto que Desencadenó Tu Realidad Actual" },
     { title: "Agradece a Tu Cuerpo", description: "Cómo la Biodecodificación Te Muestra la Solución para Tu Supervivencia" },
@@ -34,125 +38,126 @@ export default function InicioPage() {
   ];
 
   return (
-    <div className="space-y-16"> {/* Increased spacing between sections */}
-      <section className="text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl lg:text-6xl">
-          Bienvenido a Alma Mía
-        </h1>
-        <p className="mt-6 text-lg leading-8 text-foreground/80">
-          Descubre el poder transformador de la Biodecodificación y sana tu vida desde la raíz.
-        </p>
-      </section>
+    <>
+      <CoursePromoModal isOpen={isPromoModalOpen} onClose={() => setIsPromoModalOpen(false)} />
+      <div className="space-y-16">
+        <section className="text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl lg:text-6xl">
+            Bienvenido a Alma Mía
+          </h1>
+          <p className="mt-6 text-lg leading-8 text-foreground/80">
+            Descubre el poder transformador de la Biodecodificación y sana tu vida desde la raíz.
+          </p>
+        </section>
 
-      <Card className="shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-3xl flex items-center gap-2">
-            <BookOpen className="h-8 w-8 text-primary" />
-            <span>Nuestro Curso de Auto Biodecodificación</span>
-          </CardTitle>
-          <CardDescription>
-            Un viaje profundo hacia el autoconocimiento y la sanación integral.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-8 items-start">
-            <div>
-              <p className="text-foreground/90 mb-4">
-                La Biodecodificación es un enfoque terapéutico que busca el origen emocional y transgeneracional
-                de las enfermedades y los patrones de comportamiento. Este curso te proporcionará una comprensión
-                profunda de cómo tus emociones, creencias y la historia de tus ancestros influyen en tu bienestar.
-              </p>
-              <p className="text-foreground/90">
-                Aprenderás a identificar y liberar los conflictos emocionales que se manifiestan en tu cuerpo y
-                en tu vida, abriendo el camino hacia una salud plena y una mayor consciencia.
-              </p>
-            </div>
-            <div className="flex flex-col items-center text-center"> {/* Centered content */}
-              <div className="rounded-lg overflow-hidden shadow-md md:max-w-[240px] mx-auto">
-                <Image
-                  src="https://i.imgur.com/Ie2M1zA.jpeg" 
-                  alt="Karina Pasamán, instructora del curso Alma Mia" // More descriptive alt text
-                  width={300} 
-                  height={400} 
-                  className="object-cover w-full h-auto"
-                  data-ai-hint="woman portrait"
-                />
+        <Card className="shadow-lg">
+          <CardHeader>
+            <CardTitle className="text-3xl flex items-center gap-2">
+              <BookOpen className="h-8 w-8 text-primary" />
+              <span>Nuestro Curso de Auto Biodecodificación</span>
+            </CardTitle>
+            <CardDescription>
+              Un viaje profundo hacia el autoconocimiento y la sanación integral.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+              <div>
+                <p className="text-foreground/90 mb-4">
+                  La Biodecodificación es un enfoque terapéutico que busca el origen emocional y transgeneracional
+                  de las enfermedades y los patrones de comportamiento. Este curso te proporcionará una comprensión
+                  profunda de cómo tus emociones, creencias y la historia de tus ancestros influyen en tu bienestar.
+                </p>
+                <p className="text-foreground/90">
+                  Aprenderás a identificar y liberar los conflictos emocionales que se manifiestan en tu cuerpo y
+                  en tu vida, abriendo el camino hacia una salud plena y una mayor consciencia.
+                </p>
               </div>
-              <div className="mt-4">
-                <p className="text-base font-semibold text-primary">Karina Pasamán</p>
-                <p className="text-xs text-foreground/80">Bioquímica</p>
-                <p className="text-xs text-foreground/80">Docente</p>
-                <p className="text-xs text-foreground/80">Terapeuta de Biodecodificación</p>
+              <div className="flex flex-col items-center text-center">
+                <div className="rounded-lg overflow-hidden shadow-md md:max-w-[240px] mx-auto">
+                  <Image
+                    src="https://i.imgur.com/Ie2M1zA.jpeg"
+                    alt="Karina Pasamán, instructora del curso Alma Mia"
+                    width={300}
+                    height={400}
+                    className="object-cover w-full h-auto"
+                    data-ai-hint="woman portrait"
+                  />
+                </div>
+                <div className="mt-4">
+                  <p className="text-base font-semibold text-primary">Karina Pasamán</p>
+                  <p className="text-xs text-foreground/80">Bioquímica</p>
+                  <p className="text-xs text-foreground/80">Docente</p>
+                  <p className="text-xs text-foreground/80">Terapeuta de Biodecodificación</p>
+                </div>
               </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
 
-      <Card className="shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-2xl">Beneficios del Curso</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ul className="space-y-4">
-            {courseBenefits.map((benefit, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <benefit.icon className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
-                <span className="text-foreground/90">{benefit.text}</span>
-              </li>
+        <Card className="shadow-lg">
+          <CardHeader>
+            <CardTitle className="text-2xl">Beneficios del Curso</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-4">
+              {courseBenefits.map((benefit, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <benefit.icon className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
+                  <span className="text-foreground/90">{benefit.text}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-lg">
+          <CardHeader>
+            <CardTitle className="text-2xl">¿Qué Aprenderás?</CardTitle>
+            <CardDescription>Contenido detallado de nuestros módulos.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {courseModules.map((module, index) => (
+              <div key={index} className="p-4 border rounded-lg bg-secondary/50">
+                <h3 className="font-semibold text-primary">{module.title}</h3>
+                {module.description && (
+                  <p className="text-sm text-foreground/80 mt-1">{module.description}</p>
+                )}
+              </div>
             ))}
-          </ul>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
 
-      <Card className="shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-2xl">¿Qué Aprenderás?</CardTitle>
-          <CardDescription>Contenido detallado de nuestros módulos.</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {courseModules.map((module, index) => (
-            <div key={index} className="p-4 border rounded-lg bg-secondary/50">
-              <h3 className="font-semibold text-primary">{module.title}</h3>
-              {module.description && (
-                <p className="text-sm text-foreground/80 mt-1">{module.description}</p>
-              )}
-            </div>
-          ))}
-        </CardContent>
-      </Card>
+        <section className="space-y-8">
+          <div className="text-center">
+            <h2 className="text-3xl font-semibold text-primary mb-2">Lo que dicen nuestros alumnos</h2>
+            <p className="text-lg text-foreground/80">
+              Experiencias reales de transformación y crecimiento.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <CardContent className="flex-grow relative pt-8 pb-8">
+                  <Quote className="absolute top-2 left-2 h-8 w-8 text-primary/30 transform -translate-x-1 -translate-y-1" />
+                  <p className="text-sm text-foreground/80 italic leading-relaxed px-4">
+                    {testimonial.testimonial}
+                  </p>
+                  <Quote className="absolute bottom-2 right-2 h-8 w-8 text-primary/30 transform translate-x-1 translate-y-1 rotate-180" />
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
 
-      {/* Testimonials Section */}
-      <section className="space-y-8">
         <div className="text-center">
-          <h2 className="text-3xl font-semibold text-primary mb-2">Lo que dicen nuestros alumnos</h2>
+          <CheckCircle className="h-16 w-16 text-accent mx-auto mb-4" />
+          <h2 className="text-3xl font-semibold text-primary mb-2">¡Transforma Tu Vida Hoy!</h2>
           <p className="text-lg text-foreground/80">
-            Experiencias reales de transformación y crecimiento.
+            Este curso es una inversión en tu bienestar y crecimiento personal. Te esperamos.
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <CardContent className="flex-grow relative pt-8 pb-8"> {/* Added padding top/bottom */}
-                <Quote className="absolute top-2 left-2 h-8 w-8 text-primary/30 transform -translate-x-1 -translate-y-1" />
-                <p className="text-sm text-foreground/80 italic leading-relaxed px-4">
-                  {testimonial.testimonial}
-                </p>
-                <Quote className="absolute bottom-2 right-2 h-8 w-8 text-primary/30 transform translate-x-1 translate-y-1 rotate-180" />
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      <div className="text-center">
-         <CheckCircle className="h-16 w-16 text-accent mx-auto mb-4" />
-        <h2 className="text-3xl font-semibold text-primary mb-2">¡Transforma Tu Vida Hoy!</h2>
-        <p className="text-lg text-foreground/80">
-          Este curso es una inversión en tu bienestar y crecimiento personal. Te esperamos.
-        </p>
       </div>
-    </div>
+    </>
   );
 }
-
