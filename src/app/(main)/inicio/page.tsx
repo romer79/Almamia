@@ -68,12 +68,12 @@ export default function InicioPage() {
             </div>
             <div className="rounded-lg overflow-hidden shadow-md">
               <Image
-                src="https://placehold.co/600x400.png"
+                src="https://i.imgur.com/Ie2M1zA.jpeg"
                 alt="Concepto de Biodecodificación"
                 width={600}
                 height={400}
                 className="object-cover w-full h-full"
-                data-ai-hint="wellness nature"
+                data-ai-hint="logo spiritual"
               />
             </div>
           </div>
