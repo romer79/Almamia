@@ -161,9 +161,9 @@ export default function InicioPage() {
         </div>
       </div>
 
-      {/* Anuncio fijo en la esquina inferior derecha */}
+      {/* Anuncio fijo en la esquina inferior izquierda */}
       {isFixedAdVisible && (
-        <div className="fixed bottom-4 right-4 z-50 p-2 bg-card border border-border rounded-lg shadow-lg w-48 md:w-60">
+        <div className="fixed bottom-4 left-4 z-50 p-2 bg-card border border-border rounded-lg shadow-lg w-48 md:w-60">
           <button 
             onClick={() => setIsFixedAdVisible(false)}
             className="absolute -top-2 -right-2 bg-background text-foreground rounded-full p-0.5 border border-border hover:bg-muted z-10"
