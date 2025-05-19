@@ -12,7 +12,7 @@ export function Logo({ size = "text-2xl" }: { size?: string; }) {
         className="rounded-full"
         data-ai-hint="logo abstract floral" // Updated AI hint
       />
-      <span className="text-foreground">Alma Mia</span>
+      <span className="text-foreground">Alma Mía</span>
     </Link>
   );
 }
