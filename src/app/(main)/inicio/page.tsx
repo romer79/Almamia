@@ -69,7 +69,7 @@ export default function InicioPage() {
             </div>
             <div className="rounded-lg overflow-hidden shadow-md md:max-w-[240px] mx-auto">
               <Image
-                src="https://i.imgur.com/Ie2M1zA.jpeg"
+                src="https://i.imgur.com/Ie2M1zA.jpeg" 
                 alt="Instructora del curso Alma Mia posando sonriente"
                 width={300} // Aspect ratio 3:4, actual width will be controlled by parent div
                 height={400} // Aspect ratio 3:4, actual height will be calculated
