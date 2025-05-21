@@ -14,7 +14,6 @@ interface CoursePromoModalProps {
 
 export function CoursePromoModal({ isOpen, onClose }: CoursePromoModalProps) {
   const whatsappNumber = "5493764603697";
-  // Updated WhatsApp message
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hola Alma mía, quisiera más información sobre el curso de Biodecodificación e inscribirme.")}`;
 
   const handleClose = () => {
@@ -23,18 +22,17 @@ export function CoursePromoModal({ isOpen, onClose }: CoursePromoModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
-      <DialogContent className="sm:max-w-md p-0 overflow-hidden"> {/* Changed max-width to md */}
+      <DialogContent className="sm:max-w-md p-0 overflow-hidden">
           <>
             <DialogHeader className="p-6 pb-4 text-center">
-              {/* Updated Dialog Title */}
               <DialogTitle className="text-2xl font-bold text-primary">¡Inscríbete al Curso de Alma mía!</DialogTitle>
             </DialogHeader>
-            <div className="px-6"> {/* Added padding for image */}
+            <div className="px-6">
               <Image
                 src="https://i.imgur.com/zGPkHSn.jpeg"
                 alt="Promoción Curso Alma mía"
-                width={400} // Adjusted width for better display in modal
-                height={400} // Adjusted height
+                width={400}
+                height={400}
                 className="object-contain w-full h-auto rounded-md"
                 data-ai-hint="course promotion flyer"
               />
@@ -73,12 +71,12 @@ export function CoursePromoModal({ isOpen, onClose }: CoursePromoModalProps) {
 export const usePromoModalState = () => {
   const [isPromoModalOpen, setIsPromoModalOpen] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsPromoModalOpen(true);
-    }, 500); 
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => { // Eliminado para que no se abra automáticamente
+  //   const timer = setTimeout(() => {
+  //     setIsPromoModalOpen(true);
+  //   }, 500); 
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return { isPromoModalOpen, setIsPromoModalOpen };
 };
