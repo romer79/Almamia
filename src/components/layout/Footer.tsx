@@ -10,7 +10,7 @@ export function Footer() {
   return (
     <footer className="border-t bg-background">
       <div className="container mx-auto px-4 py-6 text-center text-sm text-muted-foreground md:px-6">
-        <p>&copy; {currentYear} Alma Mia Portal. Todos los derechos reservados.</p>
+        <p>&copy; {currentYear} Alma mía Portal. Todos los derechos reservados.</p>
         <p className="mt-1">Hecho con <span className="text-primary">&hearts;</span> para tu crecimiento.</p>
         <p className="mt-2">
           <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline">

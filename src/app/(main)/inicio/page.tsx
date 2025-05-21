@@ -45,7 +45,7 @@ export default function InicioPage() {
       <div className="space-y-16">
         <section className="text-center">
           <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl lg:text-6xl">
-            Bienvenido a Alma Mía
+            Bienvenido a Alma mía
           </h1>
           <p className="mt-6 text-lg leading-8 text-foreground/80">
             Descubre el poder transformador de la Biodecodificación y sana tu vida desde la raíz.
@@ -79,7 +79,7 @@ export default function InicioPage() {
                 <div className="rounded-lg overflow-hidden shadow-md md:max-w-[240px] mx-auto">
                   <Image
                     src="https://i.imgur.com/Ie2M1zA.jpeg"
-                    alt="Karina Pasamán, instructora del curso Alma Mia"
+                    alt="Karina Pasamán, instructora del curso Alma mía"
                     width={300}
                     height={400}
                     className="object-cover w-full h-auto"
@@ -173,7 +173,7 @@ export default function InicioPage() {
           </button>
           <Image
             src="https://i.imgur.com/zGPkHSn.jpeg"
-            alt="Promoción Curso Alma Mía"
+            alt="Promoción Curso Alma mía"
             width={240} 
             height={240} 
             className="object-contain w-full h-auto rounded"

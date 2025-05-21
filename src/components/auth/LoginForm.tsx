@@ -41,7 +41,7 @@ export function LoginForm() {
     <Card className="w-full max-w-md shadow-xl">
       <CardHeader className="space-y-1 text-center">
         <CardTitle className="text-3xl font-bold text-primary">Iniciar Sesión</CardTitle>
-        <CardDescription>Ingresa tus credenciales para acceder a Alma Mia</CardDescription>
+        <CardDescription>Ingresa tus credenciales para acceder a Alma mía</CardDescription>
       </CardHeader>
       <form action={formAction}>
         <CardContent className="space-y-6">

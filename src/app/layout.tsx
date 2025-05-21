@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Alma Mía Portal',
-  description: 'Portal de acceso al curso de Biodecodificación y herramientas de Alma Mía.',
+  title: 'Alma mía Portal',
+  description: 'Portal de acceso al curso de Biodecodificación y herramientas de Alma mía.',
 };
 
 export default function RootLayout({

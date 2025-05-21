@@ -4,7 +4,8 @@
 import { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { X, MessageCircle } from 'lucide-react'; // Usaremos MessageCircle para el botón de WhatsApp
+import { X, MessageCircle } from 'lucide-react';
+import Image from 'next/image'; // Import Image
 
 interface CoursePromoModalProps {
   isOpen: boolean;
@@ -13,7 +14,8 @@ interface CoursePromoModalProps {
 
 export function CoursePromoModal({ isOpen, onClose }: CoursePromoModalProps) {
   const whatsappNumber = "5493764603697";
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hola, quisiera más información sobre el curso de Biodecodificación.")}`;
+  // Updated WhatsApp message
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hola Alma mía, quisiera más información sobre el curso de Biodecodificación e inscribirme.")}`;
 
   const handleClose = () => {
     onClose();
@@ -21,15 +23,25 @@ export function CoursePromoModal({ isOpen, onClose }: CoursePromoModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
-      <DialogContent className="sm:max-w-[425px] p-0 overflow-hidden">
+      <DialogContent className="sm:max-w-md p-0 overflow-hidden"> {/* Changed max-width to md */}
           <>
             <DialogHeader className="p-6 pb-4 text-center">
-              <DialogTitle className="text-2xl font-bold text-primary">¡Consulta Sobre Nuestro Curso!</DialogTitle>
+              {/* Updated Dialog Title */}
+              <DialogTitle className="text-2xl font-bold text-primary">¡Inscríbete al Curso de Alma mía!</DialogTitle>
             </DialogHeader>
-            <div className="p-6 pt-0 text-center">
+            <div className="px-6"> {/* Added padding for image */}
+              <Image
+                src="https://i.imgur.com/zGPkHSn.jpeg"
+                alt="Promoción Curso Alma mía"
+                width={400} // Adjusted width for better display in modal
+                height={400} // Adjusted height
+                className="object-contain w-full h-auto rounded-md"
+                data-ai-hint="course promotion flyer"
+              />
+            </div>
+            <div className="p-6 pt-4 text-center">
               <p className="text-sm text-foreground/80 mb-6">
-                ¿Tienes preguntas o quieres saber más sobre el curso de Biodecodificación?
-                ¡Contáctanos directamente por WhatsApp!
+                Aprovecha esta oportunidad para transformar tu vida. ¡Contáctanos por WhatsApp para inscribirte!
               </p>
             </div>
             <DialogFooter className="p-6 pt-2 flex flex-col sm:flex-row justify-center gap-3">
@@ -39,7 +51,7 @@ export function CoursePromoModal({ isOpen, onClose }: CoursePromoModalProps) {
               <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white">
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 h-5 w-5" />
-                  Chatear por WhatsApp
+                  Inscribite
                 </a>
               </Button>
             </DialogFooter>
@@ -62,10 +74,9 @@ export const usePromoModalState = () => {
   const [isPromoModalOpen, setIsPromoModalOpen] = useState(false);
 
   useEffect(() => {
-    // Modal will try to open on every page load for /inicio, after a short delay.
     const timer = setTimeout(() => {
       setIsPromoModalOpen(true);
-    }, 500); // 0.5 second delay
+    }, 500); 
     return () => clearTimeout(timer);
   }, []);
 
